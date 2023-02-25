@@ -7,7 +7,7 @@ router.get('/movies/add', moviesController.add) //vista add
 router.post('/movies/add', moviesController.create);
 router.get('/movies/edit/:id', moviesController.edit); //vista edit
 router.post('/movies/edit/:id', moviesController.update);
-router.get('/movies/delete', moviesController.delete);
+router.post('/movies/delete/:id', moviesController.delete);
 router.get('/movies/:id', moviesController.detail); //vista detail
 
 

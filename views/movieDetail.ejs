@@ -17,9 +17,7 @@
         <li>
             duracion: "<%=movie.length%>" minutos
         </li>
-        <li>
-            Genero"<%=movie.genre.name%>"
-        </li>
+        <li>Genero: <% if (movie.genre && movie.genre.name) { %><%= movie.genre.name %><% } %></li>
         <li>
             Actores:
         </li>
@@ -39,7 +37,11 @@
         </button>
     </a>
       <br>
-      <br>
+      <form action="/movies/delete/<%=movie.id%>" method="post">
+        <button type="submit">
+                 Borrar!
+        </button>
+      </form>  
       <br>
       <br>
     <%-include ('footer') -%>

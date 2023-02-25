@@ -64,8 +64,23 @@ let moviesController = {
             res.send('Error al actualizar la película');
           });
     },
-    delete: function(req, res) {
-    },
+    delete: function(req, res) { //borrado de pelicula de la DB con metodo Paranoid de sequelize activado.
+        db.Movies.destroy({
+          where: {
+            id: req.params.id
+          },
+          paranoid: true // activar el modo paranoid
+        }).then((deletedRowCount) => {
+          if (deletedRowCount === 0) {
+            return res.status(404).send({ message: 'Registro no encontrado' });
+          }
+          // redirigir al listado de películas, incluyendo la consulta "deleted=1" en la URL
+          res.redirect("/");
+        }).catch(error => {
+          res.status(500).send({ message: 'Error al eliminar el registro' });
+        });
+      },
+      
     detail: function(req, res) {
         db.Movies.findByPk(req.params.id, {
             include: [{association: "genre"}, {association: "actors"}]

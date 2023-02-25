@@ -18,14 +18,15 @@
     <input type="number" id="length" name="length" min="0" required><br>
 
     <label for="Genre">Genero</label>
-      <select name="Genres">
+      <select name="genres">
         <% for (let i =0; i < genres.length; i++) { %>
         <option value="<%=genres[i].id%>">
           <%=genres[i].name%>
         </option>
         <% } %>
       </select>
-<br>
+    <br>
+    <br>
     <input type="submit" value="Crear película">
   </form>
   <%-include ('footer') -%>
