@@ -8,9 +8,18 @@ let moviesController = {
             })
             
     },
+    // crear: function(req, res) {
+    //     db.Genres.findAll()
+    //         .then(function(genres) {
+    //             return res.render("listadoDePeliculas", {genres: genres});
+    //     })
+    // },
     add: function(req, res) {
-        res.render("createMovie")
-    },
+        db.Genres.findAll()
+        .then(function(genres) {
+            return res.render("createMovie", {genres: genres});
+                 })
+             },
     create: function(req, res) {
         db.Movies.create({
             title: req.body.title,
@@ -30,7 +39,9 @@ let moviesController = {
     delete: function(req, res) {
     },
     detail: function(req, res) {
-        db.Movies.findByPk(req.params.id)
+        db.Movies.findByPk(req.params.id, {
+            include: [{association: "genre"}, {association: "actors"}]
+        }) 
         .then(function(movie){
             res.render("movieDetail", {movie: movie});
         })

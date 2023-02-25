@@ -2,16 +2,42 @@
 <%-include ('header') -%>
     
 <body>
-    <h1>Detalle de la Pelicula</h1>
+    <h1>Detalle de la Pelicula "<%=movie.title%>"</h1>
 
-    <h3>titulo: "<%=movie.title%>"</h3>
-    <h3>id: "<%=movie.id%>"</h3>
-    <h3>rating: "<%=movie.rating%>"</h3>
-    <h3>premios: "<%=movie.awards%>"</h3>
-    <h3>duracion: "<%=movie.length%>" minutos</h3>
-    <h3>Genero"<%=movie.genre_id%>"</h3>
+    <ul>
+        <li>
+            id: "<%=movie.id%>"
+        </li>
+        <li>
+            rating: "<%=movie.rating%>"
+        </li>
+        <li>
+            premios: "<%=movie.awards%>"
+        </li>
+        <li>
+            duracion: "<%=movie.length%>" minutos
+        </li>
+        <li>
+            Genero"<%=movie.genre.name%>"
+        </li>
+<br>
+<br>
+<br>
+<h4>Actores: </h5>
+    <ul>
+        <% for (let i = 0; i < movie.actors.length; i++) { %>
 
-      
+       
+        <li>
+            <%=movie.actors[i].first_name%>   <%=movie.actors[i].last_name%>
+        </li>
+        <% } %>
+    </ul>
+
+      <br>
+      <br>
+      <br>
+      <br>
     <%-include ('footer') -%>
 </body>
 </html>
