@@ -2,13 +2,13 @@ let express = require('express');
 let router = express.Router();
 let moviesController = require('../controllers/moviesController.js');
 
-router.get('/', moviesController.list);
-// router.get('/movies/crear', moviesController.crear);
-router.get('/movies/add', moviesController.add)
+router.get('/', moviesController.list); //listado
+router.get('/movies/add', moviesController.add) //vista add
 router.post('/movies/add', moviesController.create);
-router.get('/movies/modify', moviesController.modify);
+router.get('/movies/edit/:id', moviesController.edit); //vista edit
+router.post('/movies/edit/:id', moviesController.update);
 router.get('/movies/delete', moviesController.delete);
-router.get('/movies/:id', moviesController.detail);
+router.get('/movies/:id', moviesController.detail); //vista detail
 
 
 module.exports = router;

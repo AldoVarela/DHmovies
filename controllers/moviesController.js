@@ -20,22 +20,50 @@ let moviesController = {
             return res.render("createMovie", {genres: genres});
                  })
              },
-    create: function(req, res) {
+    create: function(req, res) { //aca creamos una nueva pelicula
         db.Movies.create({
             title: req.body.title,
             rating: req.body.rating,
             awards: req.body.awards,
             release_date: req.body.release_date,
             length: req.body.length,
-            genre_id: req.body.genre_id
+            genre_id: req.body.genres
         })
         .then(function() {
             res.redirect('/');
         });
     },
-    modify: function(req, res) {
+    edit: function(req, res) { // dos pedidos asincronicos, van definidos por separado
+        let callMovie = db.Movies.findByPk(req.params.id); //hacemos el pedidos a peliculas
+        let callGenres = db.Genres.findAll(); //hacemos el pedido a generos
+            Promise.all([callMovie, callGenres])
+            .then(function([movie, genres]) { // el then se ejecuta cuando ambas promesas se cumplen
+                res.render("editMovie", { movie: movie, genres: genres });
+            })
+  
     },
-
+    update:function(req, res) { 
+        db.Movies.update({
+            title: req.body.title,
+            rating: req.body.rating,
+            awards: req.body.awards,
+            release_date: req.body.release_date,
+            length: req.body.length,
+            genre_id: req.body.genres 
+        }, {where: {
+                id: req.params.id
+            }
+        })
+        .then(function(result) {
+            // Si la actualización es exitosa, redirige a la página de detalles de la película actualizada
+            res.redirect('/movies/' + req.params.id);
+          })
+          .catch(function(error) {
+            // Si ocurre un error, manejarlo de la manera apropiada
+            console.log(error);
+            res.send('Error al actualizar la película');
+          });
+    },
     delete: function(req, res) {
     },
     detail: function(req, res) {

@@ -20,10 +20,10 @@
         <li>
             Genero"<%=movie.genre.name%>"
         </li>
-<br>
-<br>
-<br>
-<h4>Actores: </h5>
+        <li>
+            Actores:
+        </li>
+
     <ul>
         <% for (let i = 0; i < movie.actors.length; i++) { %>
 
@@ -33,7 +33,11 @@
         </li>
         <% } %>
     </ul>
-
+    <a href="/movies/edit/<%=movie.id%>">
+        <button>
+            Editar
+        </button>
+    </a>
       <br>
       <br>
       <br>
