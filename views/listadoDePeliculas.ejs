@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Bienvenidos a DH movies</title>
-</head>
+<%-include ('header') -%>
 <body>
     <h1>Listado de Peliculas</h1>
         <ul>
@@ -11,11 +7,9 @@
                 <a href="/movies/<%=movies[i].id%>"><%=movies[i].title %></a>
             </li>
             <% } %>
-        </ul>
-
-        <a href="/movies/add">Agregar Película!</a>
-    
-
-    
+        </ul>     
+<br>
+<br>
+<%-include ('footer') -%> 
 </body>
 </html>

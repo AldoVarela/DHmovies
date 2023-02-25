@@ -23,6 +23,13 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false,
     };
     const Genres = sequelize.define(alias, cols, config);
+    
+    Genres.associate = function(models) {
+        Genres.hasMany(models.Movies, {
+            as: "movies",
+            foreignKey: "genre_id"
+        });
+    }
 
     return Genres;
 }

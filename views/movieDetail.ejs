@@ -1,5 +1,5 @@
 
-<html>
+<%-include ('header') -%>
     
 <body>
     <h1>Detalle de la Pelicula</h1>
@@ -9,9 +9,9 @@
     <h3>rating: "<%=movie.rating%>"</h3>
     <h3>premios: "<%=movie.awards%>"</h3>
     <h3>duracion: "<%=movie.length%>" minutos</h3>
-    <h3>id de genero"<%=movie.genre_id%>"</h3>
+    <h3>Genero"<%=movie.genre_id%>"</h3>
 
       
-
+    <%-include ('footer') -%>
 </body>
 </html>

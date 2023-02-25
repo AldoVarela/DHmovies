@@ -31,11 +31,20 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false,
     };
     const Movie = sequelize.define(alias, cols, config);
-    // Add the association to the Genre model
-    Movie.belongsTo(sequelize.models.Genres, {
-        as: "genre", // the alias for the associated model
-        foreignKey: "genre_id" // the foreign key in the Movies table
-  });
+    
+    Movie.associate = function(models) {
+        Movie.belongsTo(models.Genres, {
+            as: "genre",
+            foreignKey: "genre_id",
+        });
+        Movie.belongsToMany(models.Actors,{
+            as: "actors",
+            through: "actor_movie",
+            foreignKey: "movie_id",
+            otherKey: "actor_id",
+            timestamps: false
+        });
+    }
 
     return Movie;
 }
