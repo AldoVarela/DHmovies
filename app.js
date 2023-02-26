@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();	
+const path = require('path');
+const publicPath = path.join(__dirname, 'public');
 const moviesRoutes = require('./routes/movies');
 const methodOverride = require("method-override");
 
@@ -11,6 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); //listo para recibir peticiones post.
 
 //rutas
+app.use( express.static (publicPath) );
 app.use('/', moviesRoutes);
 
 app.get('/', function(req, res) {

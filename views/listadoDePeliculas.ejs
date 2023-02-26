@@ -1,15 +1,25 @@
+<%-include('head') -%>
 <%-include ('header') -%>
 <body>
-    <h1>Listado de Peliculas</h1>
+    <section>
+           <h1>Listado de Peliculas</h1>
+           <div class="conteiner">
+            <div class="content">
         <ul>
-            <% for (let i=0 ; i < movies.length ; i++) { %>
+                 <% for (let i=0 ; i < movies.length ; i++) { %>
             <li>
                 <a href="/movies/<%=movies[i].id%>"><%=movies[i].title %></a>
             </li>
             <% } %>
-        </ul>     
+        </ul>
+            </div>
+            
+           
+           </div>
+             
 <br>
 <br>
+    </section>
+ 
 <%-include ('footer') -%> 
-</body>
-</html>
+

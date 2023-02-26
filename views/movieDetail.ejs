@@ -1,9 +1,14 @@
-
+<%-include ('head') -%>
 <%-include ('header') -%>
     
 <body>
-    <h1>Detalle de la Pelicula "<%=movie.title%>"</h1>
+    <section>
 
+    
+    <h1>Detalle de la Pelicula "<%=movie.title%>"</h1>
+        <div>
+
+        
     <ul>
         <li>
             id: "<%=movie.id%>"
@@ -31,18 +36,19 @@
         </li>
         <% } %>
     </ul>
-    <a href="/movies/edit/<%=movie.id%>">
+        <a href="/movies/edit/<%=movie.id%>">
         <button>
             Editar
         </button>
-    </a>
-      <br>
-      <form action="/movies/delete/<%=movie.id%>" method="post">
+        </a>
+      
+        <form action="/movies/delete/<%=movie.id%>" method="post">
         <button type="submit">
                  Borrar!
         </button>
-      </form>  
-      <br>
+      </form>
+    </div>  
+      <br></section>
       <br>
     <%-include ('footer') -%>
 </body>

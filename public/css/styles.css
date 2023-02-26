@@ -1,0 +1,94 @@
+/* Reset de estilos para evitar problemas de compatibilidad */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos generales para todo el documento */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  
+  /* Estilos para el encabezado */
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header p {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  header nav li {
+    margin: 0 10px;
+  }
+  
+  header nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+  }
+  
+  header nav li a:hover {
+    color: #f8b32d;
+  }
+  
+  /* Estilos para el contenido principal */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  section {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  div{
+    margin: 10px 30px 20px 30px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    /* text-align: center; */
+  }
+
+  div ul {
+    list-style: none;
+  }
+  
+  
+
+  
+  /* Estilos para los enlaces */
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #f8b32d;
+  }
+
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 10px;
+  }
+  

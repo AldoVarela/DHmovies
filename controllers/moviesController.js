@@ -74,7 +74,7 @@ let moviesController = {
           if (deletedRowCount === 0) {
             return res.status(404).send({ message: 'Registro no encontrado' });
           }
-          // redirigir al listado de películas, incluyendo la consulta "deleted=1" en la URL
+          // redirigir al listado de películas.
           res.redirect("/");
         }).catch(error => {
           res.status(500).send({ message: 'Error al eliminar el registro' });
