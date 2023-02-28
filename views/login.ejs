@@ -1,19 +1,34 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Login</title>
-  </head>
-  <body>
-    <h1>Iniciar sesión</h1>
+<%-include ('head') -%> <%-include ('header') -%>
+
+<body>
   
+  <div class="centrado">
     <form method="POST" action="/login">
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required>
-      <br>
+      <label for="email">Email:</label>
+      <input
+        size=""
+        class="forma"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="name@example.com"
+        required
+      />
+      <br />
       <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" required>
-      <br>
-      <button type="submit">Iniciar sesión</button>
+      <input
+        class="forma"
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required
+      />
+      <br />
+      <button type="submit" class="btn btn-secondary">Iniciar sesión</button>
     </form>
-  </body>
-</html>
+  </div>
+</body>
+<br />
+
+<%-include ('footer') -%>

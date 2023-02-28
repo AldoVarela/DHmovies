@@ -2,7 +2,8 @@
 <%-include ('header') -%>
 <body>
   <section>
-    <div>
+    <div class="conteiner">
+      <div class="content">
     <h1>Editar Película</h1>
       <form action="/movies/edit/<%= movie.id %>" method="post">
       <label for="title">Título:</label>
@@ -37,6 +38,7 @@
       </select><br>
         <br>
       <input type="submit" value="Guardar">
+    </div>
         </div>
     </section>
   </form>

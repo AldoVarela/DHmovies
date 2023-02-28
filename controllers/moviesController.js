@@ -3,15 +3,10 @@ let db = require("../database/models");
 let moviesController = {
   list: function (req, res) {
     db.Movies.findAll().then(function (movies) {
-      res.render("listadoDePeliculas", { movies: movies });
+      res.render("home", { movies: movies });
     });
   },
-  // crear: function(req, res) {
-  //     db.Genres.findAll()
-  //         .then(function(genres) {
-  //             return res.render("listadoDePeliculas", {genres: genres});
-  //     })
-  // },
+  
   add: function (req, res) {
     db.Genres.findAll().then(function (genres) {
       return res.render("createMovie", { genres: genres });

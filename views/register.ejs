@@ -1,18 +1,21 @@
 <%-include ('head') -%> <%-include ('header') -%>
-<form action="/register" method="POST">
-  <div>
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" required />
-  </div>
-  <div>
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required />
-  </div>
-  <div>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required />
-  </div>
-  <button type="submit">Registrate</button>
-</form>
+<div class="centrado">
+  <form action="/register" method="POST">
+    <div>
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    <div>
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Registrate</button>
+  </form>
+</div>
+<br />
 
 <%-include ('footer') -%>

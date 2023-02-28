@@ -52,7 +52,7 @@ app.use(
 );
 
 app.get("/", function (req, res) {
-  res.render("listadoDePeliculas", { movies: movies });
+  res.render("home", { movies: movies });
 });
 
 app.get("/register", function (req, res) {

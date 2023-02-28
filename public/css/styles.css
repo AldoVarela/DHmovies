@@ -50,22 +50,43 @@
   
   /* Estilos para el contenido principal */
   main {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 20px;
   }
 
-  section {
-    margin: 0 auto;
-    text-align: center;
+  .forma{ 
+    border: solid 1px black;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-left: 5px;
+    width: 200px;
   }
 
-  div{
+  .centrado{
+    display: flex;
+    justify-content: center;
+  }
+
+  .conteiner {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  
+  /* section {
+    margin: 0 auto;
+    text-align: center;
+  } */
+
+  /* div{
     margin: 10px 30px 20px 30px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     border-radius: 20px;
-    /* text-align: center; */
-  }
+     text-align: center; }
+  */
 
   div ul {
     list-style: none;
