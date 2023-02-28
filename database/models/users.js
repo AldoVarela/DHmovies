@@ -28,6 +28,6 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false,
     };
     const Users = sequelize.define(alias, cols, config);
-
-    return Users;
-}
+    
+    return Users
+    }

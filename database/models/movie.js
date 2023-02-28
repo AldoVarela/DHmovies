@@ -23,8 +23,10 @@ module.exports = (sequelize, dataTypes) => {
         },
         genre_id: {
             type: dataTypes.INTEGER
+        },
+        deleted_at: {
+            type: dataTypes.DATE
         }
-
     };
     let config = {
         tableName: "movies",

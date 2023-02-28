@@ -1,17 +1,23 @@
+<header>
+  <p>Bienvenidos a DH Movies</p>
+  <nav>
+    <ul>
+      <% if (locals.isAdmin) { %>
+      <li>
+        <a href="/movies/add">Crear Pelicula</a>
+      </li>
+      <% } %>
 
-   
-         <header>
-            <p>
-                Bienvenidos a DH Movies
-            </p>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/movies/add">Crear Pelicula</a>
-                                          <li>
-                        <a href="/">Listado de Peliculas</a>
-                     </li>  
-                    </li>
-                </ul>
-            </nav>
-        </header>
+      <li>
+        <a href="/">Listado de Peliculas</a>
+      </li>
+
+      <% if (locals.isLogged) { %>
+      <li><a href="/logout">Logout</a></li>
+        <% } else { %>
+      <li><a href="/register">Registrate</a></li>
+      <li><a href="/login">logueate</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
