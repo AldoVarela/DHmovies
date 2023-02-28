@@ -38,12 +38,13 @@
 
     <% if (locals.isAdmin) { %>
         <a href="/movies/edit/<%=movie.id%>">
-        <button>
+        <button class="btn btn-secondary">
             Editar
         </button>
         </a>
         <form action="/movies/delete/<%=movie.id%>" method="post">
-        <button type="submit">Borrar!</button>
+            <br>
+        <button type="submit" class="btn btn-secondary">Borrar!</button>
     <% } %>
       </form>
     </div>

@@ -1,14 +1,15 @@
 <%-include ('head') -%> <%-include ('header') -%>
 <body>
   <section>
-    <h1>Crear película</h1>
-    <div>
+    
+    <div class="centrado">
+      <!-- <h4>Crear película</h4> -->
       <form action="" method="post">
         <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required /><br />
+        <input class="forma" type="text" id="title" name="title" required /><br />
 
         <label for="rating">Calificación:</label>
-        <input
+        <input class="forma"
           type="number"
           id="rating"
           name="rating"
@@ -19,10 +20,10 @@
         /><br />
 
         <label for="awards">Premios:</label>
-        <input type="number" id="awards" name="awards" min="0" /><br />
+        <input class="forma" type="number" id="awards" name="awards" min="0" /><br />
 
         <label for="releaseDate">Fecha de estreno:</label>
-        <input
+        <input class="forma"
           type="date"
           id="release_date"
           name="release_date"
@@ -30,7 +31,7 @@
         /><br />
 
         <label for="length">Duración (minutos):</label>
-        <input type="number" id="length" name="length" min="0" required /><br />
+        <input  class="forma"type="number" id="length" name="length" min="0" required /><br />
 
         <label for="Genre">Genero</label>
         <select name="genres">
