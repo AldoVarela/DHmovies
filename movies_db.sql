@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: laravel-database
+-- Host: localhost    Database: movies_db
 -- ------------------------------------------------------
--- Server version	5.7.18-0ubuntu0.16.04.1
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -19,25 +19,21 @@
 -- Table structure for table `actor_episode`
 --
 
-DROP DATABASE IF EXISTS movies_db;
-CREATE DATABASE movies_db;
-USE movies_db;
-
 DROP TABLE IF EXISTS `actor_episode`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `actor_episode` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `actor_id` int(10) unsigned NOT NULL,
-  `episode_id` int(10) unsigned NOT NULL,
+  `actor_id` int unsigned NOT NULL,
+  `episode_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `actor_episode_actor_id_foreign` (`actor_id`),
   KEY `actor_episode_episode_id_foreign` (`episode_id`),
   CONSTRAINT `actor_episode_actor_id_foreign` FOREIGN KEY (`actor_id`) REFERENCES `actors` (`id`),
   CONSTRAINT `actor_episode_episode_id_foreign` FOREIGN KEY (`episode_id`) REFERENCES `episodes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,19 +52,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `actor_movie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `actor_movie` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `actor_id` int(10) unsigned NOT NULL,
-  `movie_id` int(10) unsigned NOT NULL,
+  `actor_id` int unsigned NOT NULL,
+  `movie_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `actor_movie_actor_id_foreign` (`actor_id`),
   KEY `actor_movie_movie_id_foreign` (`movie_id`),
   CONSTRAINT `actor_movie_actor_id_foreign` FOREIGN KEY (`actor_id`) REFERENCES `actors` (`id`),
   CONSTRAINT `actor_movie_movie_id_foreign` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,19 +83,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `actors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `actors` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `last_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `rating` decimal(3,1) DEFAULT NULL,
-  `favorite_movie_id` int(10) unsigned DEFAULT NULL,
+  `favorite_movie_id` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `actors_favorite_movie_id_foreign` (`favorite_movie_id`),
   CONSTRAINT `actors_favorite_movie_id_foreign` FOREIGN KEY (`favorite_movie_id`) REFERENCES `movies` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,20 +114,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `episodes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `episodes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `number` int(10) unsigned DEFAULT NULL,
+  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `number` int unsigned DEFAULT NULL,
   `release_date` datetime NOT NULL,
   `rating` decimal(3,1) NOT NULL,
-  `season_id` int(10) unsigned DEFAULT NULL,
+  `season_id` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `episodes_season_id_foreign` (`season_id`),
   CONSTRAINT `episodes_season_id_foreign` FOREIGN KEY (`season_id`) REFERENCES `seasons` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,17 +146,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `genres`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `genres` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ranking` int(10) unsigned NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `ranking` int unsigned NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `genres_ranking_unique` (`ranking`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,13 +175,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,21 +200,22 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `movies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `movies` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `rating` decimal(3,1) unsigned NOT NULL,
-  `awards` int(10) unsigned NOT NULL DEFAULT '0',
+  `awards` int unsigned NOT NULL DEFAULT '0',
   `release_date` datetime NOT NULL,
-  `length` int(10) unsigned DEFAULT NULL,
-  `genre_id` int(10) unsigned DEFAULT NULL,
+  `length` int unsigned DEFAULT NULL,
+  `genre_id` int unsigned DEFAULT NULL,
+  `deleted_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `movies_genre_id_foreign` (`genre_id`),
   CONSTRAINT `movies_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +224,7 @@ CREATE TABLE `movies` (
 
 LOCK TABLES `movies` WRITE;
 /*!40000 ALTER TABLE `movies` DISABLE KEYS */;
-INSERT INTO `movies` VALUES (1,NULL,NULL,'Avatar',7.9,3,'2010-10-04 00:00:00',120,5),(2,NULL,NULL,'Titanic',7.7,11,'1997-09-04 00:00:00',320,3),(3,NULL,NULL,'La Guerra de las galaxias: Episodio VI',9.1,7,'2004-07-04 00:00:00',NULL,5),(4,NULL,NULL,'La Guerra de las galaxias: Episodio VII',9.0,6,'2003-11-04 00:00:00',180,5),(5,NULL,NULL,'Parque Jurasico',8.3,5,'1999-01-04 00:00:00',270,5),(6,NULL,NULL,'Harry Potter y las Reliquias de la Muerte - Parte 2',9.0,2,'2008-07-04 00:00:00',190,6),(7,NULL,NULL,'Transformers: el lado oscuro de la luna',0.9,1,'2005-07-04 00:00:00',NULL,5),(8,NULL,NULL,'Harry Potter y la piedra filosofal',10.0,1,'2008-04-04 00:00:00',120,8),(9,NULL,NULL,'Harry Potter y la cámara de los secretos',3.5,2,'2009-08-04 00:00:00',200,8),(10,NULL,NULL,'El rey león',9.1,3,'2000-02-04 00:00:00',NULL,10),(11,NULL,NULL,'Alicia en el país de las maravillas',5.7,2,'2008-07-04 00:00:00',120,NULL),(12,NULL,NULL,'Buscando a Nemo',8.3,2,'2000-07-04 00:00:00',110,7),(13,NULL,NULL,'Toy Story',6.1,0,'2008-03-04 00:00:00',150,7),(14,NULL,NULL,'Toy Story 2',3.2,2,'2003-04-04 00:00:00',120,7),(15,NULL,NULL,'La vida es bella',8.3,5,'1994-10-04 00:00:00',NULL,3),(16,NULL,NULL,'Mi pobre angelito',3.2,1,'1989-01-04 00:00:00',120,1),(17,NULL,NULL,'Intensamente',9.0,2,'2008-07-04 00:00:00',120,7),(18,NULL,NULL,'Carrozas de fuego',9.9,7,'1980-07-04 00:00:00',180,NULL),(19,NULL,NULL,'Big',7.3,2,'1988-02-04 00:00:00',130,8),(20,NULL,NULL,'I am Sam',9.0,4,'1999-03-04 00:00:00',130,3),(21,NULL,NULL,'Hotel Transylvania',7.1,1,'2012-05-04 00:00:00',90,10);
+INSERT INTO `movies` VALUES (1,NULL,NULL,'Avatar',7.9,3,'2010-01-01 00:00:00',120,5,NULL),(2,NULL,NULL,'Titanic',7.7,11,'1997-09-04 00:00:00',320,3,NULL),(3,NULL,NULL,'La Guerra de las galaxias: Episodio VI',9.1,7,'2004-07-04 00:00:00',NULL,5,NULL),(4,NULL,NULL,'La Guerra de las galaxias: Episodio VII',9.0,6,'2003-11-04 00:00:00',180,5,NULL),(5,NULL,NULL,'Parque Jurasico',8.3,5,'1999-01-04 00:00:00',270,5,NULL),(6,NULL,NULL,'Harry Potter y las Reliquias de la Muerte - Parte 2',9.0,2,'2008-07-04 00:00:00',190,6,NULL),(7,NULL,NULL,'Transformers: el lado oscuro de la luna',0.9,1,'2005-07-04 00:00:00',154,5,NULL),(8,NULL,NULL,'Harry Potter y la piedra filosofal',10.0,1,'2008-04-04 00:00:00',120,8,NULL),(9,NULL,NULL,'Harry Potter y la cámara de los secretos',3.5,2,'2009-08-04 00:00:00',200,8,NULL),(10,NULL,NULL,'El rey león',9.1,5,'2000-02-04 00:00:00',125,10,NULL),(11,NULL,NULL,'Alicia en el país de las maravillas',5.7,2,'2008-07-04 00:00:00',120,NULL,NULL),(12,NULL,NULL,'Buscando a Nemo',8.3,2,'2000-07-04 00:00:00',110,7,NULL),(13,NULL,NULL,'Toy Story',6.1,0,'2008-03-04 00:00:00',150,7,NULL),(14,NULL,NULL,'Toy Story 2',3.2,2,'2003-04-04 00:00:00',120,7,NULL),(15,NULL,NULL,'La vida es bella',8.3,5,'1994-10-04 00:00:00',NULL,3,NULL),(16,NULL,NULL,'Mi pobre angelito',3.2,1,'1989-01-04 00:00:00',120,1,NULL),(17,NULL,NULL,'Intensamente',9.0,2,'2008-07-04 00:00:00',120,7,NULL),(18,NULL,NULL,'Carrozas de fuego',9.9,7,'1980-07-04 00:00:00',180,NULL,NULL),(19,NULL,NULL,'Big',7.3,2,'1988-02-04 00:00:00',130,8,NULL),(20,NULL,NULL,'I am Sam',9.0,4,'1999-03-04 00:00:00',130,3,NULL),(21,NULL,NULL,'Hotel Transylvania',7.1,1,'2012-05-04 00:00:00',90,10,NULL),(44,NULL,NULL,'Aldete',10.0,5,'2023-02-03 00:00:00',123,9,NULL);
 /*!40000 ALTER TABLE `movies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,14 +234,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`),
   KEY `password_resets_token_index` (`token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,20 +259,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `seasons`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `seasons` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `number` int(10) unsigned DEFAULT NULL,
+  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `number` int unsigned DEFAULT NULL,
   `release_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
-  `serie_id` int(10) unsigned DEFAULT NULL,
+  `serie_id` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `seasons_serie_id_foreign` (`serie_id`),
   CONSTRAINT `seasons_serie_id_foreign` FOREIGN KEY (`serie_id`) REFERENCES `series` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,19 +291,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `series`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `series` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `release_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
-  `genre_id` int(10) unsigned DEFAULT NULL,
+  `genre_id` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `series_genre_id_foreign` (`genre_id`),
   CONSTRAINT `series_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,22 +322,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `rol` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-ALTER TABLE `users` ADD `rol` TINYINT NOT NULL DEFAULT '0' AFTER `updated_at`;
-
-
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,6 +343,7 @@ ALTER TABLE `users` ADD `rol` TINYINT NOT NULL DEFAULT '0' AFTER `updated_at`;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'11','aldotepro@aldo.com','$2b$10$rcHxb.xUi4Xat50huVC6XuzJH/D9sYvpejYKeRZFTfmgOA0jjQIZC',NULL,NULL,NULL,0),(3,'testin','testin@aldo.com','$2b$10$3GdJoqF0n2d8Ilq2dVdoOu6tD5nM0KO9CJnrXS7kLeJs3q9Kc7.I.',NULL,NULL,NULL,0),(4,'probando1','aldotepr1@aldo.com','$2b$10$EVZ/6Pcj33j5mwjhTlM3ueku3XRZuMNUCW6TfeWjDWIxQZ26mB4RS',NULL,NULL,NULL,0),(5,'test1','aldotepro@aldo1.com','$2b$10$o8JozPP/B9YwNmjFzn/50O8AvcJ2y3HPDV278wfSwn/mShRJdFKKi',NULL,NULL,NULL,0),(6,'test12','aldotepr1o@aldo1.com','$2b$10$envQcbCt..SppLqGbTVtDumZUv.rEHpIzH8HOmxfT7M7Gv739E6fC',NULL,NULL,NULL,0),(8,'test121','aldotepr11o@aldo1.com','$2b$10$I6n/JlppCxTAT8E4jGd/S.b.WhWddDUrIbSYC8nPxsqswsool1vUy',NULL,NULL,NULL,0),(9,'12341','aldotepro123@aldo.1com','$2b$10$A73fqDi7jtv28WC2CSoPC.tpqUHUIkGV56ww95qeuqLuluW8IN9Zi',NULL,NULL,NULL,0),(10,'123411','aldotepro123@aldo.11com','$2b$10$vxUifm9HiXBRu1Ewd/adfOtWUGM1uk10IV6rnj0ERKjWOwQThTD3C',NULL,NULL,NULL,0),(11,'testlogin','login@aldo.com','$2b$10$uwneHlfInmQx0tJXAsQsveuV9/Riw3vtmUfOQ/rlT0hhemh.nUdty',NULL,NULL,NULL,0),(12,'curepi','cure@curepi.com','$2b$10$HgESSMza9zugKVn5ut2EjuGGLe3gMRR0YJpMCLdvbeZ6Ssddywdk6',NULL,NULL,NULL,0),(13,'curepi1','cure1@curepi.com','$2b$10$NTg/PZ6lWUUUfrZC9tJvPOd6PLiJpS31LTrYkR/vZgXArO7auH4w.',NULL,NULL,NULL,0),(14,'test25','aldotepro@aldo25.com','$2b$10$iFjzWcL8ebE9c7EsOAsZxeKtBuuxFPDUze7aY65JF.sPKw6j1J2RW',NULL,NULL,NULL,0),(15,'ncahito','aldotepros@aaldo.com','$2b$10$U8.73Jaj7XC60kFBx93tx.absO8sWqVZ2gvxsNKlt8RKSS4n6a2gi',NULL,NULL,NULL,0),(16,'pirulo','aldoteproasd@aldod.com','$2b$10$pozYFZ2h5WCW702mL7V9deM658yhJcBvLIRxenSCexTI84yA/rJCG',NULL,NULL,NULL,0),(17,'nachito','nachito@nachito.com','$2b$10$QlB7wYzBOoJW6yZjnkuqUuMA95o4ZY5lUATdslls0QNgsOpY0JdHq',NULL,NULL,NULL,0),(18,'asd','nachin@nachin.com','$2b$10$ad09jrT7UR1pXwHGiOl6ieQ6k5rmOKz0tSUl7/cHt1xryXOuwnwka',NULL,NULL,NULL,0),(19,'Admin','admin@admin.com','$2b$10$EZKvpJsst1Ak272j5htOIeWkUecfBOwQ5c7dsK.dsZR0mWkpENvOK',NULL,NULL,NULL,1),(20,'Aldo','aldo@aldo.com','$2b$10$6nH1y5mWxnmkBIw1mUn/je1rN8BcuQnoMVblBd.YFCEbfMJCpNqGq',NULL,NULL,NULL,1),(21,'Genaro','Genaro@varela.com','$2b$10$NB9DMQuAbLextHLe21N4T.px2kEYNPJJK85Dz9r49nEkLAoNRBgeS',NULL,NULL,NULL,0),(22,'testeando','test24@test.com','$2b$10$gwKOJolmdoy06G0rhX62XOggoQjWhvLS2zuoQm7jZGbZJTIzs.VC6',NULL,NULL,NULL,0),(23,'loco','loco@loco.com','$2b$10$dLGpw.GieJUSFLFiz6YR1uXSnpBBvdgZw8Vxm3e0OqGhwJOuD4K1i',NULL,NULL,NULL,0),(24,'loco1','loco1@loco.com','$2b$10$b/Ql7cvOeQzs0XSIj3LvReDgEc88s9VMCByWi5dOJNtleNG4pgqsy',NULL,NULL,NULL,0),(25,'rocio','rocio@rocio.com','$2b$10$712/eJmtk6NB2ron3V.9wu.BvH4FGI54FkTvp6/.g5ejcLBoOF7si',NULL,NULL,NULL,0),(26,'aldete','aldete@aldete.com','$2b$10$7n2H/YtVozlY3IDfqlaGyeB451d1b8EIKk2b3zJod/5fMJ2nl42ZG',NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -361,4 +356,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-12 10:09:28
+-- Dump completed on 2023-02-28 18:15:50
