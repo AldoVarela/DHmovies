@@ -13,7 +13,7 @@ const usersRoutes = require("./routes/usersRoutes");
 const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware");
 const adminLoggedMiddleware = require("./middlewares/adminLoggedMiddleware");
 
-// Configuración de la sesión
+// Configuración de la sesión de 60 segundos
 app.use(
   session({
     secret: "DHloco",
@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-// MiddleWares...
+// MiddleWares
 app.use(userLoggedMiddleware);
 app.use(adminLoggedMiddleware);
 
