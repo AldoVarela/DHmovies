@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "pantera",
+    "password": "pantera", //contraseña de mi db en mi pc
     "database": "movies_db",
     "port": "3306",
     "host": "localhost",
