@@ -40,16 +40,7 @@ app.use(express.static(publicPath));
 app.use("/", usersRoutes);
 app.use("/", moviesRoutes);
 
-// Configuración de la sesión
-app.use(
-  session({
-    secret: "DHloco",
-    resave: false,
-    saveUninitialized: false,
-    name: "DH movies",
-    cookie: { maxAge: 60000 },
-  })
-);
+
 
 app.get("/", function (req, res) {
   res.render("home", { movies: movies });
